@@ -1,6 +1,6 @@
-# web-development
+# Web development
 
-## Learnign web stuff
+## Learning web stuff
 
 ### React JS
 
