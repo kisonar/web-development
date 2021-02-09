@@ -27,3 +27,10 @@ yarn config set strict-ssl false
 ```
 npx create-react-app marcin-react
 ```
+
+##### Build
+```
+yarn start => run development mode
+yarn test
+yarn build => build production
+```
