@@ -53,7 +53,7 @@ table.putItem(
 ```
 				</section>
 				<section data-markdown>
-Podejscie klasyczne - Kotlin - asynch - Attribute Values - zapisz
+Podejscie klasyczne - Kotlin - asynch - Attribute Values - zapis
 ```Kotlin
 private val dynamodb: DynamoDbAsyncClient
 suspend fun storeEventSessionStopped(kEvent: KEvent) {
@@ -106,17 +106,19 @@ suspend fun removeItemBySessionId(sessionId: Long): DeleteItemResponse{
 				</section>
 
 				<section data-markdown="">
-Jest zle ale czy stanie tam gdzie jestesmy ma sens?
-					TODO No thanks we are to busy
+Jest jako tako, ale czy stanie tam, gdzie jesteśmy, ma sens?
+
+![zarobieni!](./images/we-are-too-busy.jpg "zarobirni")
 				</section>
 				<section data-markdown="">
-STOP: Low-Level Interfaces
+
+Przestań używać: Low-Level Interfaces
 
 com.amazonaws.services.dynamodbv2.*
 
 software.amazon.awssdk.services.dynamodb.model.*
 
-START: Object Persistence Interface
+Zacznij z: Object Persistence Interface
 
 software.amazon.awssdk.enhanced.dynamodb.*
 
@@ -129,9 +131,9 @@ Co dostajemy?
 
 2 Adnotacje
 
-3 Gotowe konwertery danych (DynamoDB zapisuje wszystko jako String, Number), ale czasem trzeba napisac swój jak nie ma
+3 Gotowe konwertery danych (DynamoDB zapisuje wszystko jako String, Number), ale czasem trzeba napisac swój własny
 
-  Klasy konwerterów musza miec domyślne konstruktory - inaczej nie działaą adnotacje !
+  Klasy konwerterów muszą mieć domyślne konstruktory - inaczej nie działają adnotacje !
 
 5 Mniej kodu => mniej problemów
 				</section>
