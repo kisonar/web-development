@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides" >
 				<section data-markdown>
 				  <textarea data-template>
 					  (J/K)PA 4 DynamoDB - how to
@@ -36,11 +36,9 @@
 				  </textarea>
 					  </section>
 				<section data-markdown>
-					Podejscie klasyczne - Attribute Value
-
-					```
+Podejscie klasyczne - Java synchronicznie
+```Java
 DynamoDbClient dc = DynamoDbClient.builder().region(region).build();
-DynamoDbEnhancedClient edc = DynamoDbEnhancedClient.builder().dynamoDbClient(ddb).build();
 DynamoDB dynamoDB = new DynamoDB(dc);
 Table table = dynamoDB.getTable("Movies");
 int rok = 2015;
@@ -48,12 +46,108 @@ String tytul = "The Big New Movie";
 Map<String,Object> atrybuciki = new HashMap<String,Object>();
 atrybuciki.put("opis", "Jest OK");
 atrybuciki.put("ocena", 4);
-PutItemOutcome outcome = table.putItem(
+table.putItem(
 	new Item()
 	.withPrimaryKey("rok", rok, "tytul", tytul)
 	.withMap("atrybuciki", atrybuciki));
+```
+				</section>
+				<section data-markdown>
+Podejscie klasyczne - Kotlin - asynch - Attribute Values - zapisz
+```Kotlin
+private val dynamodb: DynamoDbAsyncClient
+suspend fun storeEventSessionStopped(kEvent: KEvent) {
+    val itemValues = HashMap<String,AttributeValue>()
+	itemValues[SESSION_ID_PK] = AttributeValue.builder().n(kEvent.Id.toString()).build()
+	itemValues[SESSION_STATE] = AttributeValue.builder().s(STOPPED).build()
+	itemValues[EVENT] = AttributeValue.builder().s(kEvent.toStr()).build()
+	writeToStorage(itemValues)
+}
+
+private suspend fun writeToStorage(itemValues : Map<String, AttributeValue>){
+	val item = PutItemRequest.builder().tableName(getQualifiedTableName())
+				.item(itemValues) .build()
+	withTimeout(timeout) { dynamodb.putItem(item).await() }
+}
+```
+				</section>
+
+				<section data-markdown>
+Podejscie klasyczne - Kotlin - asynch - Atribute Values - usuwanie
+```Kotlin
+private val dynamodb: DynamoDbAsyncClient
+suspend fun removeItemBySessionId(sessionId: Long): DeleteItemResponse{
+	return withTimeout(timeout) {
+		dynamodb.deleteItem(
+			DeleteItemRequest.builder()
+				.tableName(getQualifiedTableName()).key(
+				mapOf(
+					  SESSION_ID_PK to
+					  AttributeValue.builder().n(sessionId.toString())
+					  .build())
+					).build()
+				).await()
+	}
+}
+```
+				</section>
+
+				<section data-markdown>
+					Podejscie klasyczne - Kotlin/Java - sync/asynch - Atribute Values - aktualizacja
+
+					1 Pobierz obiekt i odczytaj atrybuty
+
+					2 Zaktualizuj istniejace atrybuty nowymi wartosciami lub dodaj nowe atrybuty lub usun atrybuty
+
+					3 Wpisz atrybuty w obiekt i zapisz obiekt.
+
+					![Bombardiero!](./images/kapitan-bomba.jpg "Bombardiero")
 					```
 				</section>
+
+				<section data-markdown="">
+Jest zle ale czy stanie tam gdzie jestesmy ma sens?
+					TODO No thanks we are to busy
+				</section>
+				<section data-markdown="">
+STOP: Low-Level Interfaces
+
+com.amazonaws.services.dynamodbv2.*
+
+software.amazon.awssdk.services.dynamodb.model.*
+
+START: Object Persistence Interface
+
+software.amazon.awssdk.enhanced.dynamodb.*
+
+Wymaga użycia: DynamoDbEnhancedAsyncClient...
+				</section>
+				<section data-markdown="">
+Co dostajemy?
+
+1 J/K Persistence API - proste w użyciu
+
+2 Adnotacje
+
+3 Gotowe konwertery danych (DynamoDB zapisuje wszystko jako String, Number), ale czasem trzeba napisac swój jak nie ma
+
+  Klasy konwerterów musza miec domyślne konstruktory - inaczej nie działaą adnotacje !
+
+5 Mniej kodu => mniej problemów
+				</section>
+
+				<section data-markdown="">
+Looknijmy więc w kod : Session-Events-Aggregator
+
+DynamoDbRepository
+
+Status, StatusConverter
+
+AggregationData
+
+AWSConfig
+				</section>
+
 			</div>
 		</div>
 
