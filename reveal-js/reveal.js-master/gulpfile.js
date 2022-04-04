@@ -271,7 +271,8 @@ gulp.task('build', gulp.parallel('js', 'css', 'plugins'))
 gulp.task('package', gulp.series('default', () =>
 
     gulp.src([
-        './index.html',
+        './index-dynamodb.html',
+        './index-ras-1.html',
         './dist/**',
         './lib/**',
         './images/**',
