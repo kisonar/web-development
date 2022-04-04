@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" >
+				<section data-markdown>
+				  <textarea data-template>
+					  (J/K)PA 4 DynamoDB - how to
+					  <p>marcin.migdal@fortum.com</p>
+				  </textarea>
+				</section>
+				<section data-markdown>
+				  <textarea data-template>
+					  Czyli follow the specialist...
+
+					  ![Wiesio!](./images/Pan-Wiesio.jpg "Wiesio 2.0")
+
+				  </textarea>
+				</section>
+				<section data-markdown>
+				  <textarea data-template>
+					  CRUD DynamoDB - o co biega?
+				  </textarea>
+					  </section>
+				<section data-markdown>
+Podejscie klasyczne - Java synchronicznie
+```Java
+DynamoDbClient dc = DynamoDbClient.builder().region(region).build();
+DynamoDB dynamoDB = new DynamoDB(dc);
+Table table = dynamoDB.getTable("Movies");
+int rok = 2015;
+String tytul = "The Big New Movie";
+Map<String,Object> atrybuciki = new HashMap<String,Object>();
+atrybuciki.put("opis", "Jest OK");
+atrybuciki.put("ocena", 4);
+table.putItem(
+	new Item()
+	.withPrimaryKey("rok", rok, "tytul", tytul)
+	.withMap("atrybuciki", atrybuciki));
+```
+				</section>
+				<section data-markdown>
+Podejscie klasyczne - Kotlin - asynch - Attribute Values - zapis
+```Kotlin
+private val dynamodb: DynamoDbAsyncClient
+suspend fun storeEventSessionStopped(kEvent: KEvent) {
+    val itemValues = HashMap<String,AttributeValue>()
+	itemValues[SESSION_ID_PK] = AttributeValue.builder().n(kEvent.Id.toString()).build()
+	itemValues[SESSION_STATE] = AttributeValue.builder().s(STOPPED).build()
+	itemValues[EVENT] = AttributeValue.builder().s(kEvent.toStr()).build()
+	writeToStorage(itemValues)
+}
+
+private suspend fun writeToStorage(itemValues : Map<String, AttributeValue>){
+	val item = PutItemRequest.builder().tableName(getQualifiedTableName())
+				.item(itemValues) .build()
+	withTimeout(timeout) { dynamodb.putItem(item).await() }
+}
+```
+				</section>
+
+				<section data-markdown>
+Podejscie klasyczne - Kotlin - asynch - Atribute Values - usuwanie
+```Kotlin
+private val dynamodb: DynamoDbAsyncClient
+suspend fun removeItemBySessionId(sessionId: Long): DeleteItemResponse{
+	return withTimeout(timeout) {
+		dynamodb.deleteItem(
+			DeleteItemRequest.builder()
+				.tableName(getQualifiedTableName()).key(
+				mapOf(
+					  SESSION_ID_PK to
+					  AttributeValue.builder().n(sessionId.toString())
+					  .build())
+					).build()
+				).await()
+	}
+}
+```
+				</section>
+
+				<section data-markdown>
+					Podejscie klasyczne - Kotlin/Java - sync/asynch - Atribute Values - aktualizacja
+
+					1 Pobierz obiekt i odczytaj atrybuty
+
+					2 Zaktualizuj istniejace atrybuty nowymi wartosciami lub dodaj nowe atrybuty lub usun atrybuty
+
+					3 Wpisz atrybuty w obiekt i zapisz obiekt.
+
+					![Bombardiero!](./images/kapitan-bomba.jpg "Bombardiero")
+					```
+				</section>
+
+				<section data-markdown="">
+Jest jako tako, ale czy bycie tam - gdzie jesteśmy - ma sens?
+
+![zarobieni!](./images/we-are-too-busy.jpg "zarobirni")
+				</section>
+				<section data-markdown="">
+
+Przestań używać: Low-Level Interfaces
+
+com.amazonaws.services.dynamodbv2.*
+
+software.amazon.awssdk.services.dynamodb.model.*
+
+Zacznij z: Object Persistence Interface
+
+software.amazon.awssdk.enhanced.dynamodb.*
+
+Wymaga użycia: DynamoDbEnhancedAsyncClient...
+				</section>
+				<section data-markdown="">
+Co dostajemy?
+
+1 J/K Persistence API - proste w użyciu
+
+2 Adnotacje
+
+3 Gotowe konwertery danych (DynamoDB zapisuje wszystko jako String, Number), ale czasem trzeba napisac swój własny
+
+  Klasy konwerterów muszą mieć domyślne konstruktory - inaczej nie działają adnotacje !
+
+5 Mniej kodu => mniej problemów
+				</section>
+
+				<section data-markdown="">
+Looknijmy więc w kod : Session-Events-Aggregator
+
+DynamoDbRepository
+
+Status, StatusConverter
+
+AggregationData
+
+AWSConfig
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1400,
+				height: 900,
+				margin: 0.04,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
