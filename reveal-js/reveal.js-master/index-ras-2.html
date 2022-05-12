@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" >
+				<section data-markdown>
+				  <textarea data-template>
+					  RAS - Remote Access Solutions
+
+					  Część II
+
+					  <p>marcin.migdal@fortum.com</p>
+				  </textarea>
+				</section>
+				<section data-markdown>
+				  <textarea data-template>
+					  Część I
+
+					  <span style="color:orange;font-weight:bold">Kiedyś:</span>
+
+					  VNC viewer:
+
+					  VNC server + VNC client
+
+					  <span style="color:#7FFF00;font-weight:bold">Obecnie:</span>
+
+					  <span style="color:#00CED1;font-weight:bold">Pasywne dzielenie ekranu:</span>
+
+					  Teams - problemy licencyjne + konto
+
+					  Zoom - alternatywa. Wersja free oraz komercyjna
+
+					  <span style="color:#00CED1;font-weight:bold">Aktywne dzielenie ekranu:</span>
+
+					  Team Viewer
+
+					  AnyDesk
+				  </textarea>
+				</section>
+				<section data-markdown>
+				  <textarea data-template>
+					  <span style="color: red;font-weight:bold"> Problemy:</span>
+
+					  1 Instalacja
+
+					  2 Maintenance - kompatybilność wersji
+				  </textarea>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						<span style="color:#008B8B;font-weight:bold">Opcje częściowo bezinstalacyjne:</span>
+
+						Przeglądarka - Chrome
+
+						Dodatek (chrome extension) - remote desktop
+
+						https://remotedesktop.google.com
+
+						<span style="color:#7FFF00;font-weight:bold">Dodatek instalujemy tylko raz</span>
+
+						<span style="color:#7FFF00;font-weight:bold">Sam sie uaktualnia wraz z przegladarką</span>
+
+						<span style="color:#7FFF00;font-weight:bold">Jest dość duża kompatybilność wsteczna, jeśli chodzi o wersje</span>
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Demo Chrome Remote Desktop
+
+						Łączę się z MAC'a do laptopa z WIN7
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Mamy gotowce do użycia.
+
+						A jakbym chciał coś sam zrobic?
+
+						Czy jest alternatywa?
+
+						Najlepiej z API...
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						<span style="color:#7FFF00;font-weight:bold">Guacamole</span>
+
+						Danie z przetartego avocado zmieszane z pokrojoną cebulą, pomidorami, chili i przyprawami.
+
+						<span style="color:#7FFF00;font-weight:bold">https://guacamole.apache.org</span>
+
+						Wystawia API - JAVA(guacamole-common), C(libguac) i JS(guacamole-common-js).
+
+						Wspiera protokoly VNC, RDP i SSH.
+
+						Clientless mode. Żadnych pluginów i instalcji. Tylko Docker.
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+					  ![Guacamole!](./images/guac-arch.png "Guacamole architecture")
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Część III
+
+						Użycie API Guacamole.
+
+						Dziekuję.
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1400,
+				height: 900,
+				margin: 0.04,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
