@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" >
+				<section data-markdown>
+				  <textarea data-template>
+					  Page Object Pattern – aby testy automatyczne były łatwiejsze ...
+
+					  <p>marcin.migdal@fortum.com</p>
+				  </textarea>
+				</section>
+				<section data-markdown>
+				  <textarea data-template>
+					  Podczas, wykonywania i utrzymania skryptów automatycznych borykamy się z problemami związanymi ze zmianami w testowanym oprogramowaniu.
+
+					  Zmiany nie muszą być duże ani skomplikowane, a jednak i tak potrafią sporo namieszać w naszych testach.
+				  </textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Klasycznie pisane testy np. w Pupetter w typowym JS'ie potrafią być "problematyczne"
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Jako przykład popatrzmy w przykład logowania do Nexus'a
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Jeżeli zmiany będą częste, duże i rozciągnięte to się zrobi niezły... bajzel.
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Czy jest może wzorzec projektowy, który pozwoliłby ogarnąć temat?
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Jest Page Object Pattern (POP), który wprowadza do testów pewną ideologię mającą na celu odizolowanie stron, widoków i elementów na stronie od samych testów.
+
+						Testy stają się czytelniejsze, łatwiejsze w implementacji oraz prostsze w utrzymaniu.
+					</textarea>
+				</section>
+
+				<section data-markdown>
+					<textarea data-template>
+						Jako przykład popatrzmy jak można zrobić taki sam test, ale już zgodnie ze sztuką i standardami.
+					</textarea>
+				</section>
+
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				width: 1400,
+				height: 900,
+				margin: 0.04,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
