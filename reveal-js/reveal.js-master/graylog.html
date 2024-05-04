@@ -15,26 +15,28 @@
     <div class="slides">
         <section data-markdown>
 				  <textarea data-template>
-					Graylog
+                      Graylog
 
-                    Problem zbierania i przetwarzania logow z heterogenicznych systemow/serwisow
+                      Problem zbierania i przetwarzania logow z heterogenicznych systemow oraz serwisow
 
-					<p>marcin.migdal@fortum.com</p>
+                      <p>marcin.migdal@fortum.com</p>
 				  </textarea>
         </section>
         <section data-markdown>
 				  <textarea data-template>
-                    Formaty logow: JSON, XML
+                      Formaty logow:
 
-                    Windows Event logs
+                      JSON, XML, dowolny format tekstowy
 
-                    Common Event Format (CEF),
+                      Windows Event logs
 
-                    NCSA Common Log Format (CLF),
+                      Common Event Format (CEF)
 
-                    Extended Log Format (ELF),
+                      NCSA Common Log Format (CLF)
 
-                    W3C Extended Log File Format
+                      Extended Log Format (ELF)
+
+                      W3C Extended Log File Format
 				  </textarea>
         </section>
         <section data-markdown>
@@ -48,7 +50,7 @@
         </section>
         <section data-markdown>
 				  <textarea data-template>
-                    Windows, Linux (wszystkie dystrybucje), MacOS, zOS, ChromeOS
+                    Windows, Linux , MacOS, zOS, ChromeOS
 
                     serwisy z chmur (AWS, Azure, GoogleCloudPlatform)
 
@@ -61,18 +63,22 @@
 
                     Graylog, Inc to firma zajmująca się oprogramowaniem do zarządzania logami i analizą bezpieczeństwa z siedzibą w Houston w Teksasie.
 
-                    Ich głównym produktem jest oprogramowanie do zarządzania logami, zwane także Graylog.
+                    Ich głównym produktem jest oprogramowanie do zarządzania logami zwane Graylog.
+
+                    Wersje: enterprise oraz standardowa.
 				  </textarea>
         </section>
         <section data-markdown>
 				  <textarea data-template>
-		              Stos technologiczny podstawowy:
+                      Stos technologiczny:
 
-                      Graylog - samo narzędzie
+                      Graylog - samo narzędzie, nasz kombajn.
 
-                      MongodDb - storage na definicje konfiguracji elementów infry Grayloga
+                      MongodDb - storage na definicje konfiguracji elementów infry Grayloga tj wejscia, streamy, rule itd
 
                       ElasticSearch/OpenSearch - kontener na przetowrzoną zawartośc logów
+
+                      Sugestia: najlepiej wszystko klastryzowac.
 				  </textarea>
         </section>
         <section data-markdown>
@@ -93,14 +99,13 @@
 					<textarea data-template>
                         Zakres demo na dziś - podstawowe elementy.
 
-                        0) runtime z dockerem
+                        1) runtime z dockerem
 
-                        1) definiowanie wejsc
+                        2) definiowanie wejsc
 
-                        2) podzial na streamy wraz z regulkami
+                        3) podzial na streamy wraz z regulkami
 
-                        3) przetwarzanie runtimowe
-
+                        4) przetwarzanie runtimowe
 					</textarea>
         </section>
     </div>
