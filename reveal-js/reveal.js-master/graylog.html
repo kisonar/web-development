@@ -15,18 +15,22 @@
     <div class="slides">
         <section data-markdown>
 				  <textarea data-template>
-                      Graylog - a practial alternative for LOGs
+                      Graylog - a practial alternative to LOG
                       <p>marcin.migdal@fortum.com</p>
 				  </textarea>
         </section>
         <section data-markdown>
 				  <textarea data-template>
-                      Problem zbierania i przetwarzania logow z heterogenicznych systemow oraz serwisow
+                      Problem zbierania i przetwarzania logów z heterogenicznych systemów oraz serwisów.
+
+                      Tematyka SIEM
+
+                      System Information & Event Management
 				  </textarea>
         </section>
         <section data-markdown>
 				  <textarea data-template>
-                      Formaty logow:
+                      Formaty logów:
 
                       dowolny format tekstowy, JSON, XML
 
@@ -52,7 +56,7 @@
         </section>
         <section data-markdown>
 				  <textarea data-template>
-                    Windows, Linux , MacOS, zOS, ChromeOS
+                    Windows, Linux, MacOS, ChromeOS, zOS
 
                     serwisy z chmur (AWS, Azure, GoogleCloudPlatform)
 
@@ -61,26 +65,28 @@
         </section>
         <section data-markdown>
 				  <textarea data-template>
-                    Kombajn do przetwarzania logów
+                    Kombajn do przetwarzania logów - jak do porzeczek
 
                     Graylog, Inc to firma zajmująca się oprogramowaniem do zarządzania logami i analizą bezpieczeństwa z siedzibą w Houston w Teksasie.
 
                     Ich głównym produktem jest oprogramowanie do zarządzania logami zwane Graylog.
 
-                    Wersje: enterprise oraz standardowa.
+                    Wersje: enterprise/security enhanced oraz standardowa
+
+                    https://graylog.org/pricing/
 				  </textarea>
         </section>
         <section data-markdown>
 				  <textarea data-template>
                       Stos technologiczny:
 
-                      Graylog - samo narzędzie, nasz kombajn.
+                      Graylog - samo narzędzie
 
                       MongodDb - storage na definicje konfiguracji elementów infry Grayloga tj wejscia, streamy, rule itd
 
-                      ElasticSearch/OpenSearch - kontener na przetowrzoną zawartośc logów
+                      ElasticSearch/OpenSearch - kontener na przetworzoną zawartośc logów
 
-                      Sugestia: najlepiej wszystko klastryzowac.
+                      Sugestia: najlepiej wszystko klastryzowac od razu dla produkcji.
 				  </textarea>
         </section>
         <section data-markdown>
@@ -90,6 +96,8 @@
                         Do ElasticSearch/Opensearch można podpiąc Grafane i zasilic Grafane danymi z ES/OS
 
                         NxLog - zbiera logi i wysyła do Grayloga
+
+                        Graylog - też może czyta dane z kolejek np Rabbit'a
 					</textarea>
         </section>
         <section data-markdown>
@@ -109,17 +117,9 @@
 
                         3) podzial na streamy wraz z regulkami
 
-                        4) przetwarzanie runtimowe
+                        4) przetwarzanie runtimowe w pipeline
 					</textarea>
         </section>
-        <section data-markdown>
-					<textarea data-template>
-                        NxLog + Graylog + MongoDb + ElasticSearch
-
-                        Wejscie: TCP GELF skanujace zawrtosc plikow linia po linii
-					</textarea>
-        </section>
-
     </div>
 </div>
 
