@@ -7,10 +7,11 @@
 #### Installation
 Use nvm
 
-
 nvm install 18 => install nodejs 18
 nvm --version => prints available
 nvm current => prints current
+nvm install --lts
+
 #### Requirements
 ```
 nodejs v17.3.1 
@@ -43,6 +44,7 @@ npx create-react-app marcin-react
 
 ##### Build
 ```
+yarn
 yarn install
 yarn start => run development mode
 yarn test
