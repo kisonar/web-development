@@ -13,7 +13,7 @@ nvm use v24.14.0
 
 ### npm
 ```
-npm ?
+npm 
 npm install --global yarn
 npm config set proxy http://10.144.1.10:8080
 npm config set https-proxy http://10.144.1.10:8080
