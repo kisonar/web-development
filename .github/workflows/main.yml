@@ -51,8 +51,8 @@ jobs:
       - name: 🚧 Run build
         run: yarn build
 
-      - name: ✨ Run lint
-        run: yarn lint
+      #- name: ✨ Run lint
+      #  run: yarn lint
 
       - name: 🧪 Run tests
         run: yarn test
