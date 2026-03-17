@@ -27,11 +27,24 @@ yarn config set strict-ssl false
 npx create-react-app marcin-react
 ```
 
-## Build
+### Build
 ```
 yarn
 yarn install
 yarn start => run development mode
 yarn test
 yarn build => build production
+
+TODO: how to stop development mode?
+```
+
+###
+``` 
+npm start
+npm run build
+npm test
+    Starts the test runner.
+npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
 ```
