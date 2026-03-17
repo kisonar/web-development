@@ -1,52 +1,62 @@
 # Web development
 
-## Learning web stuff
+## Installation 
 
-### React JS
-
-#### Installation
-Use nvm
-
+### nvm Node Version Manager
+```
 nvm install 18 => install nodejs 18
 nvm --version => prints available
 nvm current => prints current
 nvm install --lts
-
-#### Requirements
-```
-nodejs v17.3.1 
-npm v8.3.0
+nvm use v24.14.0
 ```
 
+### npm
 ```
-Node.js v12.20.1.
-npm 6.14.10
-yarn add v1.22.5
-
+npm 
 npm install --global yarn
-```
-
-##### Initialization
-
-##### When Proxy is used
-```
 npm config set proxy http://10.144.1.10:8080
 npm config set https-proxy http://10.144.1.10:8080
 npm config set strict-ssl false 
 npm config set registry 'http://registry.npmjs.org'
 yarn config set strict-ssl false 
+
+npm init -y
+
+TESTS
+npm install --save-dev jest @types/jest ts-jest typescript
+npm test
+
 ```
 
-##### Init itself
+## Init 
 ```
 npx create-react-app marcin-react
 ```
 
-##### Build
+### Build with yarn
 ```
 yarn
 yarn install
 yarn start => run development mode
 yarn test
 yarn build => build production
+
+TODO: 
+how to stop development mode?
+"test": "node_modules/.bin/react-scripts test --watchAll=false"
+
+
+yarn czy npm?
+```
+
+### Build with npm
+``` 
+npm start
+npm run build
+npm test
+    Starts the test runner.
+npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
 ```
