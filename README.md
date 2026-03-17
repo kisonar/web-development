@@ -34,7 +34,7 @@ npm test
 npx create-react-app marcin-react
 ```
 
-### Build
+### Build with yarn
 ```
 yarn
 yarn install
@@ -42,10 +42,15 @@ yarn start => run development mode
 yarn test
 yarn build => build production
 
-TODO: how to stop development mode?
+TODO: 
+how to stop development mode?
+"test": "node_modules/.bin/react-scripts test --watchAll=false"
+
+
+yarn czy npm?
 ```
 
-###
+### Build with npm
 ``` 
 npm start
 npm run build
