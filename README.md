@@ -20,6 +20,13 @@ npm config set https-proxy http://10.144.1.10:8080
 npm config set strict-ssl false 
 npm config set registry 'http://registry.npmjs.org'
 yarn config set strict-ssl false 
+
+npm init -y
+
+TESTS
+npm install --save-dev jest @types/jest ts-jest typescript
+npm test
+
 ```
 
 ## Init 
