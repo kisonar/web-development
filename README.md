@@ -11,7 +11,12 @@ nvm install --lts
 nvm use v24.14.0
 ```
 
-### npm
+## Init
+```
+npx create-react-app marcin-react
+```
+
+### npm - old approach
 ```
 npm 
 npm install --global yarn
@@ -22,36 +27,10 @@ npm config set registry 'http://registry.npmjs.org'
 yarn config set strict-ssl false 
 
 npm init -y
-
 TESTS
 npm install --save-dev jest @types/jest ts-jest typescript
 npm test
 
-```
-
-## Init 
-```
-npx create-react-app marcin-react
-```
-
-### Build with yarn
-```
-yarn
-yarn install
-yarn start => run development mode
-yarn test
-yarn build => build production
-
-TODO: 
-how to stop development mode?
-"test": "node_modules/.bin/react-scripts test --watchAll=false"
-
-
-yarn czy npm?
-```
-
-### Build with npm
-``` 
 npm start
 npm run build
 npm test
@@ -60,3 +39,18 @@ npm run eject
     Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!
 ```
+
+### Build with yarn - recommended
+```
+yarn
+yarn install
+yarn start => run development mode
+yarn test
+yarn build => build production
+
+how to stop development mode?
+"test": "node_modules/.bin/react-scripts test --watchAll=false"
+
+```
+## Others
+redux zustand
