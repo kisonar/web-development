@@ -10,4 +10,8 @@ export class Rectangle {
     area(): number {
         return this.width * this.height;
     }
+
+    innaFunkcja (dane: string []): string {
+        return dane.join(' ');
+    }
 }
