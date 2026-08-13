@@ -44,13 +44,31 @@ function MyClickedButton() {
   );
 }
 
+function GlobalButton( {value} ) {
+
+
+
+
+    return (
+        <button >
+            Clicked {value} times
+        </button>
+    );
+}
+
+
+
 function App() {
+
+    const [global, setGlobal] = useState(15);
+
   return (
     <div className="App">
       <header className="App-header">
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
+          <GlobalButton value={global}/>
         <MyClickedButton />
         <MyClickedButton />
         <ShoppingList />
