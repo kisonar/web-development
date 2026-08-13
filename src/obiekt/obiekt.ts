@@ -14,4 +14,9 @@ export class Rectangle {
     innaFunkcja (dane: string []): string {
         return dane.join(' ');
     }
+
+    calculate(arg1: number, arg2: number): number {
+        return arg1 + arg2;
+    }
+
 }
