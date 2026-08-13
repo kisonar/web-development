@@ -3,6 +3,8 @@ import './App.css';
 import { useState } from 'react';
 
 
+//const [mama, setMama] = useState(0);
+
 export const products = [
   { title: 'Cabbage', isFruit: false, id: 1 },
   { title: 'Garlic', isFruit: false, id: 2 },
@@ -26,7 +28,7 @@ export function ShoppingList() {
   );
 }
 
-function MyButton() {
+function MyClickedButton() {
   const [count, setCount] = useState(0);
 
 
@@ -49,8 +51,8 @@ function App() {
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
-        <MyButton />
-        <MyButton />
+        <MyClickedButton />
+        <MyClickedButton />
         <ShoppingList />
       </header>
     </div>

@@ -56,3 +56,7 @@ npm run eject
     Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!
 ```
+
+## Tutorial
+https://pl.legacy.reactjs.org/tutorial/tutorial.html
+https://react.dev/learn/tutorial-tic-tac-toe
