@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -65,9 +64,9 @@ function App() {
           Learn React
         </a>
           <GlobalButton value={global}/>
-        <MyClickedButton count={firstClicks} handleClick={handleFirstClick} />
-        <MyClickedButton count={secondClicks} handleClick={handleSecondClick} />
-        <p>Total clicks from both buttons: {global}</p>
+          <MyClickedButton count={firstClicks} handleClick={handleFirstClick} />
+          <MyClickedButton count={secondClicks} handleClick={handleSecondClick} />
+          <p>Total clicks from both buttons: {global}</p>
         <ShoppingList />
       </header>
     </div>
