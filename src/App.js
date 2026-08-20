@@ -2,9 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
-
-//const [mama, setMama] = useState(0);
-
 export const products = [
   { title: 'Cabbage', isFruit: false, id: 1 },
   { title: 'Garlic', isFruit: false, id: 2 },
@@ -28,15 +25,7 @@ export function ShoppingList() {
   );
 }
 
-function MyClickedButton() {
-  const [count, setCount] = useState(0);
-
-
-  function handleClick() {
-    //alert('You clicked me!');
-    setCount(count + 1);
-  }
-
+function MyClickedButton({ count, handleClick }) {
   return (
       <button onClick={handleClick}>
         Clicked {count} times
@@ -46,9 +35,6 @@ function MyClickedButton() {
 
 function GlobalButton( {value} ) {
 
-
-
-
     return (
         <button >
             Clicked {value} times
@@ -56,11 +42,21 @@ function GlobalButton( {value} ) {
     );
 }
 
-
-
 function App() {
 
-    const [global, setGlobal] = useState(15);
+    const [global, setGlobal] = useState(0);
+    const [firstClicks, setFirstClicks] = useState(0);
+    const [secondClicks, setSecondClicks] = useState(0);
+    function handleFirstClick() {
+        const counter = firstClicks + 1;
+        setFirstClicks(counter);
+        setGlobal(counter + secondClicks);
+    }
+    function handleSecondClick() {
+        const counter = secondClicks + 1;
+        setSecondClicks(counter);
+        setGlobal(firstClicks + counter);
+    }
 
   return (
     <div className="App">
@@ -69,8 +65,9 @@ function App() {
           Learn React
         </a>
           <GlobalButton value={global}/>
-        <MyClickedButton />
-        <MyClickedButton />
+        <MyClickedButton count={firstClicks} handleClick={handleFirstClick} />
+        <MyClickedButton count={secondClicks} handleClick={handleSecondClick} />
+        <p>Total clicks from both buttons: {global}</p>
         <ShoppingList />
       </header>
     </div>
